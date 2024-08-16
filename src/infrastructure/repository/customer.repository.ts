@@ -55,7 +55,7 @@ export default class CustomerRepository
             customerModel.zip,
             customerModel.city
         );
-        customer.Address = address;
+        customer.changeAddress(address);
         return customer;
     }
 
@@ -64,11 +64,13 @@ export default class CustomerRepository
 
         const customers = customerModels.map((customerModel) => {
             let customer = new Customer(customerModel.id, customerModel.name);
-            customer.Address = new Address(
-                customerModel.street,
-                customerModel.number,
-                customerModel.zip,
-                customerModel.city
+            customer.changeAddress(
+                new Address(
+                    customerModel.street,
+                    customerModel.number,
+                    customerModel.zip,
+                    customerModel.city
+                )
             );
             customer.addRewardPoints(customerModel.rewardPoints);
             if (customerModel.active) {

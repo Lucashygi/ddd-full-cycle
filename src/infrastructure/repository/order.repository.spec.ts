@@ -40,7 +40,7 @@ describe('Order repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         const productRepository = new ProductRepository();
@@ -85,7 +85,7 @@ describe('Order repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         const productRepository = new ProductRepository();
@@ -163,7 +163,7 @@ describe('Order repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         const productRepository = new ProductRepository();
@@ -190,7 +190,7 @@ describe('Order repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         const productRepository = new ProductRepository();
         const product = new Product('1', 'Product 1', 100);
         const orderItem = new OrderItem(
@@ -211,7 +211,7 @@ describe('Order repository test', () => {
         expect(foundOrders).toStrictEqual([order]);
 
         const customer2 = new Customer('2', 'João');
-        customer2.Address = address;
+        customer2.changeAddress(address);
         const product2 = new Product('2', 'Product 2', 200);
         const orderItem2 = new OrderItem(
             '2',

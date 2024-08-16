@@ -27,7 +27,7 @@ describe('Customer repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         const customerModel = await CustomerModel.findOne({
@@ -50,7 +50,7 @@ describe('Customer repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         customer.changeName('João');
@@ -76,7 +76,7 @@ describe('Customer repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         await customerRepository.create(customer);
 
         const foundCustomer = await customerRepository.find(customer.id);
@@ -88,12 +88,12 @@ describe('Customer repository test', () => {
         const customerRepository = new CustomerRepository();
         const customer = new Customer('1', 'Lucas');
         const address = new Address('Rua 1', 1, '00000000', 'Belo Horizonte');
-        customer.Address = address;
+        customer.changeAddress(address);
         customer.addRewardPoints(10);
 
         const customer2 = new Customer('2', 'Lelo');
         const address2 = new Address('Rua 2', 2, '00000000', 'Belo Horizonte');
-        customer2.Address = address2;
+        customer2.changeAddress(address2);
         customer2.addRewardPoints(200);
 
         customerRepository.create(customer);

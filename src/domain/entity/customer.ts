@@ -37,7 +37,7 @@ export default class Customer {
         this.validate();
     }
 
-    set Address(address: Address) {
+    changeAddress(address: Address) {
         this._address = address;
     }
 

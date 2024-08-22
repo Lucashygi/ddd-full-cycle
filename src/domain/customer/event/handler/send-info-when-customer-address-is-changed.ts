@@ -2,7 +2,7 @@ import EventHandlerInterface from '../../../@shared/event/event-handler.interfac
 import CustomerAddressChangedEvent from '../customer-address-changed.event';
 
 export default class SendInfoWhenCustomerAddressIsChangedHandler
-    implements EventHandlerInterface
+    implements EventHandlerInterface<CustomerAddressChangedEvent>
 {
     handle(event: CustomerAddressChangedEvent): void {
         console.log(

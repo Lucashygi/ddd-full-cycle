@@ -1,16 +1,19 @@
 import RepositoryInterface from '../../../../domain/@shared/repository/repository-interface';
 import Product from '../../../../domain/product/entity/product';
+import ProductInterface from '../../../../domain/product/entity/product.interface';
 import ProductModel from './product.model';
 
-export default class ProductRepository implements RepositoryInterface<Product> {
-    async create(entity: Product): Promise<void> {
+export default class ProductRepository
+    implements RepositoryInterface<ProductInterface>
+{
+    async create(entity: ProductInterface): Promise<void> {
         await ProductModel.create({
             id: entity.id,
             name: entity.name,
             price: entity.price,
         });
     }
-    async update(entity: Product): Promise<void> {
+    async update(entity: ProductInterface): Promise<void> {
         await ProductModel.update(
             {
                 name: entity.name,
@@ -23,7 +26,7 @@ export default class ProductRepository implements RepositoryInterface<Product> {
             }
         );
     }
-    async find(id: string): Promise<Product> {
+    async find(id: string): Promise<ProductInterface> {
         const productModel = await ProductModel.findOne({
             where: {
                 id,
@@ -35,7 +38,7 @@ export default class ProductRepository implements RepositoryInterface<Product> {
             productModel.price
         );
     }
-    async findAll(): Promise<Product[]> {
+    async findAll(): Promise<ProductInterface[]> {
         const products = await ProductModel.findAll();
         return products.map(
             (product) => new Product(product.id, product.name, product.price)

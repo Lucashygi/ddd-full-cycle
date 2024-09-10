@@ -43,7 +43,7 @@ describe('Unit test when customer is updated use case', () => {
         const usecase = new UpdateCustomerUseCase(customerRepository);
         input.name = '';
         await expect(usecase.execute(input)).rejects.toThrowError(
-            'customer name is required'
+            'customer: Name is required'
         );
     });
 });
